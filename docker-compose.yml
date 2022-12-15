@@ -24,6 +24,16 @@ services:
       - "8060:8060"
     depends_on:
       - postgres
+      -
+  reservation:
+    image: reservation
+    container_name: reservation system
+    restart: on-failure
+    build: ./src/reservation system
+    ports:
+      - "8070:8070"
+    depends_on:
+      - postgres
 
 
 volumes:
