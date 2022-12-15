@@ -24,7 +24,7 @@ services:
       - "8060:8060"
     depends_on:
       - postgres
-      -
+
   reservation:
     image: reservation
     container_name: reservation_system
@@ -57,6 +57,6 @@ services:
       - rating
       - library
       - reservation
-      -
+
 volumes:
   db-data:
