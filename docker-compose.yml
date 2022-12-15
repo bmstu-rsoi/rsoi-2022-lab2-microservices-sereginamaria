@@ -17,9 +17,9 @@ services:
 
   library:
     image: library
-    container_name: library system
+    container_name: library_system
     restart: on-failure
-    build: src/library system
+    build: src/library_system
     ports:
       - "8060:8060"
     depends_on:
@@ -27,14 +27,22 @@ services:
       -
   reservation:
     image: reservation
-    container_name: reservation system
+    container_name: reservation_system
     restart: on-failure
-    build: ./src/reservation system
+    build: src/reservation_system
     ports:
       - "8070:8070"
     depends_on:
       - postgres
 
-
+  rating:
+    image: rating
+    container_name: rating_system
+    restart: on-failure
+    build: ./src/rating_system
+    ports:
+      - "8050:8050"
+    depends_on:
+      - postgres
 volumes:
   db-data:
