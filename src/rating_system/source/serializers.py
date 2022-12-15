@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Rating
+from .models import RatingModel
 
 
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Rating
+        model = RatingModel
         fields = ("stars",)

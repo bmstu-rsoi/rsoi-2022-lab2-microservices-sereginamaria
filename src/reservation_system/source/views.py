@@ -7,7 +7,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
-from .models import Reservation
+from .models import ReservationModel
 from .serializers import ReservationSerializer
 
 
@@ -26,9 +26,9 @@ class Pagination(PageNumberPagination):
         ]))
 
 
-class ReservationView(ListCreateAPIView):
+class ReservationAPIView(ListCreateAPIView):
     serializer_class = ReservationSerializer
-    queryset = Reservation.objects
+    queryset = ReservationModel.objects
     renderer_classes = (JSONRenderer,)
     pagination_class = Pagination
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
@@ -47,15 +47,15 @@ class ReservationView(ListCreateAPIView):
         return super().get_serializer(*args, **kwargs)
 
 
-class ReservationUUIDView(RetrieveAPIView):
+class ReservationUUIDAPIView(RetrieveAPIView):
     serializer_class = ReservationSerializer
-    queryset = Reservation.objects
+    queryset = ReservationModel.objects
     renderer_classes = (JSONRenderer,)
     lookup_field = "reservation_uid"
 
 
-class ReturnReservationView(UpdateAPIView):
+class ReturnReservationAPIView(UpdateAPIView):
     serializer_class = ReservationSerializer
-    queryset = Reservation.objects
+    queryset = ReservationModel.objects
     renderer_classes = (JSONRenderer,)
     lookup_field = "reservation_uid"

@@ -3,7 +3,7 @@ import uuid
 from django.db import models
 
 
-class Reservation(models.Model):
+class ReservationModel(models.Model):
     class StatusChoices(models.TextChoices):
         RENTED = ("RENTED", "Rented")
         RETURNED = ("RETURNED", "Returned")

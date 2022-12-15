@@ -1,13 +1,13 @@
 from django.urls import path
 
-from .views import ReservationView, ReservationUUIDView, ReturnReservationView
+from .views import ReservationAPIView, ReservationUUIDAPIView, ReturnReservationAPIView
 
 urlpatterns = [
     path(
-        "reservations", ReservationView.as_view(),
+        "reservations", ReservationAPIView.as_view(),
     ), path(
-        "reservations/<uuid:reservation_uid>/", ReservationUUIDView.as_view(),
+        "reservations/<uuid:reservation_uid>/", ReservationUUIDAPIView.as_view(),
     ), path(
-        "reservations/<uuid:reservation_uid>/return", ReturnReservationView.as_view(),
+        "reservations/<uuid:reservation_uid>/return", ReturnReservationAPIView.as_view(),
     ),
 ]

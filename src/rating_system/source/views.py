@@ -5,7 +5,7 @@ from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.renderers import JSONRenderer
 
-from .models import Rating
+from .models import RatingModel
 from .serializers import RatingSerializer
 
 
@@ -24,9 +24,9 @@ class Pagination(PageNumberPagination):
         ]))
 
 
-class RatingView(RetrieveUpdateAPIView):
+class RatingAPIView(RetrieveUpdateAPIView):
     serializer_class = RatingSerializer
-    queryset = Rating.objects
+    queryset = RatingModel.objects
     renderer_classes = (JSONRenderer,)
     lookup_field = "username"
 

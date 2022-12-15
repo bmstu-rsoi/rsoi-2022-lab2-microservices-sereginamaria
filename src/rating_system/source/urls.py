@@ -1,9 +1,9 @@
 from django.urls import path
 
-from .views import RatingView
+from .views import RatingAPIView
 
 urlpatterns = [
     path(
-        "rating_system", RatingView.as_view(),
+        "rating", RatingAPIView.as_view(),
     ),
 ]
