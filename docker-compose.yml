@@ -16,9 +16,9 @@ services:
 
   reservation:
     image: reservation
-    container_name: reservation
+    container_name: reservation_system
     restart: on-failure
-    build: ./src/reservation_system
+    build: src/reservation_system
     ports:
       - "8070:8070"
     depends_on:
@@ -26,9 +26,9 @@ services:
 
   library:
     image: library
-    container_name: library
+    container_name: library_system
     restart: on-failure
-    build: ./src/library_system
+    build: src/library_system
     ports:
       - "8060:8060"
     depends_on:
@@ -36,9 +36,9 @@ services:
 
   rating:
     image: rating
-    container_name: rating
+    container_name: rating_system
     restart: on-failure
-    build: ./src/rating_system
+    build: src/rating_system
     ports:
       - "8050:8050"
     depends_on:

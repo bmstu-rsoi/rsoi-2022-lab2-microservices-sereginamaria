@@ -50,6 +50,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='booklibrarymodel',
             name='library_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='library', to='source.librarymodel'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='library_system', to='source.librarymodel'),
         ),
     ]

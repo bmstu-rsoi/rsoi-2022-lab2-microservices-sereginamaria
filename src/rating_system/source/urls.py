@@ -4,6 +4,6 @@ from .views import RatingAPIView
 
 urlpatterns = [
     path(
-        "rating", RatingAPIView.as_view(),
+        "rating_system", RatingAPIView.as_view(),
     ),
 ]

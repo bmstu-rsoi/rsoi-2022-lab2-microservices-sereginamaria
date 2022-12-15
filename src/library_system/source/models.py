@@ -34,5 +34,5 @@ class LibraryModel(models.Model):
 
 class BookLibraryModel(models.Model):
     book_id = models.ForeignKey(BookModel, on_delete=models.CASCADE, related_name="book")
-    library_id = models.ForeignKey(LibraryModel, on_delete=models.CASCADE, related_name="library")
+    library_id = models.ForeignKey(LibraryModel, on_delete=models.CASCADE, related_name="library_system")
     available_count = models.PositiveIntegerField()
