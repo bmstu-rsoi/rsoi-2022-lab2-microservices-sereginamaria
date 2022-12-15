@@ -14,7 +14,17 @@ services:
     ports:
       - "5432:5432"
 
-# TODO добавить сервисы
+
+  library:
+    image: library
+    container_name: library system
+    restart: on-failure
+    build: src/library system
+    ports:
+      - "8060:8060"
+    depends_on:
+      - postgres
+
 
 volumes:
   db-data:

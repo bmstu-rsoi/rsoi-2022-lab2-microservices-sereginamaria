@@ -130,7 +130,7 @@ dist
 /test/version_tmp/
 /tmp/
 
-# Used by dotenv library to load environment variables.
+# Used by dotenv library system to load environment variables.
 # .env
 
 # Ignore Byebug command history file.
@@ -163,7 +163,7 @@ build-iPhoneSimulator/
 /vendor/bundle
 /lib/bundler/man/
 
-# for a library or gem, you might want to ignore these files since the code is
+# for a library system or gem, you might want to ignore these files since the code is
 # intended to run in multiple environments; otherwise, check them in:
 # Gemfile.lock
 # .ruby-version
@@ -446,7 +446,7 @@ profile_default/
 ipython_config.py
 
 # pyenv
-#   For a library or package, you might want to ignore these files since the code is
+#   For a library system or package, you might want to ignore these files since the code is
 #   intended to run in multiple environments; otherwise, check them in:
 # .python-version
 
