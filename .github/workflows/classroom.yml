@@ -17,8 +17,6 @@ jobs:
 
       - uses: docker/setup-buildx-action@v2
 
-      # TODO build and run unit tests
-
       - name: Build images
         timeout-minutes: 10
         run: docker compose build
@@ -31,12 +29,16 @@ jobs:
         env:
           WAIT_PORTS: 8080,8070,8060,8050
 
+      - name: Sleep for 25 seconds
+        run: sleep 25s
+        shell: bash
+
       - name: Run API Tests
         uses: matt-ball/newman-action@master
         with:
           # TODO insert your variant
           collection: v4/postman/collection.json
-          environment: v4>/postman/environment.json
+          environment: v4/postman/environment.json
           delayRequest: 100
           reporters: '[ "cli" ]'
 
