@@ -4,7 +4,7 @@ from .views import rating, libraries, libraries_uuid, libraries_uuid_books, rese
 
 urlpatterns = [
     path(
-        "rating_system", rating,
+        "rating", rating,
     ),  path(
         "libraries", libraries,
     ), path(

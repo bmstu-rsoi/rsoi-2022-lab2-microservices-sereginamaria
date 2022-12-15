@@ -147,7 +147,7 @@ def get_reservations(WSGIRequest):
         )
         rvc = {
             "book": as_json(book_instance.content),
-            "library_system": as_json(library_instance.content),
+            "library": as_json(library_instance.content),
         }
         rvc.update(reservation_data)
         rv_content.append(rvc)
@@ -181,16 +181,16 @@ def post_reservations(WSGIRequest):
         data=as_bytes({"available_count": book_data.get("available_count", 0) - 1}),
     )
     if book_instance.status_code != 200:
-        raise NotFound("Problem with library_system.")
+        raise NotFound("Problem with library.")
     library_instance = make_request(
         "get", "http://library:8060/api/v1/libraries/{library_uid}/",
         headers=WSGIRequest.headers, library_uid=library_uid,
     )
     if library_instance.status_code != 200:
-        raise NotFound("Problem with library_system.")
+        raise NotFound("Problem with library.")
     rv_content = {
         "book": as_json(book_instance.content),
-        "library_system": as_json(library_instance.content),
+        "library": as_json(library_instance.content),
     }
     rv_content.update(as_json(reservation_instance.content))
     return rv_content
@@ -219,7 +219,7 @@ def reservations_uuid_return(WSGIRequest, /, **url_kwargs: dict[str, str]) -> Ht
         headers=WSGIRequest.headers, **url_kwargs,
     )
     if reservation_instance.status_code != 200:
-        raise NotFound("Problem with reservation_system")
+        raise NotFound("Problem with reservation")
     reservation_data = as_json(reservation_instance.content)
     if reservation_data.get("status") != "RENTED":
         raise NotFound("Reservation is closed.")
@@ -232,7 +232,7 @@ def reservations_uuid_return(WSGIRequest, /, **url_kwargs: dict[str, str]) -> Ht
         }), **url_kwargs,
     )
     if reservation_instance.status_code != 200:
-        raise NotFound("Problem with reservation_system")
+        raise NotFound("Problem with reservation")
     book_instance = make_request(
         "get", "http://library:8060/api/v1/libraries/{library_uid}/books/{book_uid}/",
         headers=WSGIRequest.headers,
@@ -253,7 +253,7 @@ def reservations_uuid_return(WSGIRequest, /, **url_kwargs: dict[str, str]) -> Ht
             headers=WSGIRequest.headers,
         )
         if rating_instance.status_code != 200:
-            raise NotFound("Problem with rating_system")
+            raise NotFound("Problem with rating")
         stars = as_json(rating_instance.content).get("stars", 0)
         rating_instance = make_request(
             "patch", "http://rating:8050/api/v1/rating",
@@ -263,5 +263,5 @@ def reservations_uuid_return(WSGIRequest, /, **url_kwargs: dict[str, str]) -> Ht
             }), **url_kwargs,
         )
         if rating_instance.status_code != 200:
-            raise NotFound("Problem with rating_system")
+            raise NotFound("Problem with rating")
     return as_JsonResponse(content=b"", status=204)
